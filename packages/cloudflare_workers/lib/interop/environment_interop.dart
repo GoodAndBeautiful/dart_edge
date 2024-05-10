@@ -22,6 +22,21 @@ extension PropsEnvironment on Environment {
     }
     return obj;
   }
+  
+  String getAllPropKeys() {
+    return js_util.objectKeys(this).join("\n");
+  }
+  
+  String getPropAsString(String propertyName){
+    final obj = js_util.getProperty(this, propertyName);
+    if (obj == null || obj is! String) {
+      // TODO better error
+      throw StateError(
+        'Var not found, or not a String: $propertyName - ensure it has been added to the wrangler.toml',
+      );
+    }
+    return obj;
+  }
 
   DurableObjectNamespace getDurableObjectNamespace(String name) {
     final obj = js_util.getProperty(this, name);

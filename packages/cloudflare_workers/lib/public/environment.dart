@@ -14,6 +14,13 @@ class Environment {
   DurableObjectNamespace getDurableObjectNamespace(String name) =>
       durableObjectNamespaceFromJsObject(
           _delegate.getDurableObjectNamespace(name));
+
+  String getAllPropKeys(){
+    return _delegate.getAllPropKeys();
+  }
+  String getPropAsString(String propertyName){
+    return _delegate.getPropAsString(propertyName);
+  }
 }
 
 Environment environmentFromJsObject(interop.Environment obj) =>
